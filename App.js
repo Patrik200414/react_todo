@@ -1,25 +1,32 @@
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 import TodoList from "./ToDoList.js";
 
 export default function App() {
+    var _React$useState = React.useState(['Todo 1', 'Todo 2']),
+        _React$useState2 = _slicedToArray(_React$useState, 2),
+        todos = _React$useState2[0],
+        setTodos = _React$useState2[1];
+
     return React.createElement(
-        "div",
+        'div',
         null,
-        React.createElement(TodoList, null),
-        React.createElement("input", { type: "text" }),
+        React.createElement(TodoList, { todos: todos }),
+        React.createElement('input', { type: 'text' }),
         React.createElement(
-            "button",
+            'button',
             null,
-            "Add ToDo"
+            'Add ToDo'
         ),
         React.createElement(
-            "button",
+            'button',
             null,
-            "Clear Completed"
+            'Clear Completed'
         ),
         React.createElement(
-            "div",
+            'div',
             null,
-            "0 left to do"
+            '0 left to do'
         )
     );
 }

@@ -1,11 +1,9 @@
-export default function TodoList() {
-    return React.createElement(
-        "div",
-        null,
-        React.createElement(
-            "h1",
-            null,
-            "Heyyy!"
-        )
-    );
+import Todo from "./Todo.js";
+
+export default function TodoList(_ref) {
+    var todos = _ref.todos;
+
+    return todos.map(function (todo) {
+        return React.createElement(Todo, { key: todo, todo: todo });
+    });
 }
