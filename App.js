@@ -1,11 +1,5 @@
+import TodoList from "./ToDoList.js";
+
 export default function App() {
-    return React.createElement(
-        "div",
-        null,
-        React.createElement(
-            "h1",
-            null,
-            "Hello, World!"
-        )
-    );
+    return React.createElement(TodoList, null);
 }
