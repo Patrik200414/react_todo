@@ -1,0 +1,24 @@
+{
+  "name": "react_todo",
+  "version": "1.0.0",
+  "description": "This will be a simple to-do app in react.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Patrik200414/react_todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Patrik200414/react_todo/issues"
+  },
+  "homepage": "https://github.com/Patrik200414/react_todo#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2"
+  }
+}
