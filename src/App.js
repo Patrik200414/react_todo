@@ -1,9 +1,23 @@
 import TodoList from "./ToDoList.js";
 import uniqueid from "./uuid.js";
 
+const LOCAL_STORAGE_KEY = 'todoApp.todos';
+
 export default function App(){
     const [todos, setTodos] = React.useState([]);
     let todoNameRef = React.useRef();
+    
+    React.useEffect(() => {
+        const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+        
+        if(storedTodos){
+            setTodos(storedTodos);
+        }
+    }, [])
+
+    React.useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
+    }, [todos])
 
     function handleAddTodo(event){
         let name = todoNameRef.current.value;

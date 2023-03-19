@@ -5,6 +5,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 import TodoList from "./ToDoList.js";
 import uniqueid from "./uuid.js";
 
+var LOCAL_STORAGE_KEY = 'todoApp.todos';
+
 export default function App() {
     var _React$useState = React.useState([]),
         _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -12,6 +14,18 @@ export default function App() {
         setTodos = _React$useState2[1];
 
     var todoNameRef = React.useRef();
+
+    React.useEffect(function () {
+        var storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+
+        if (storedTodos) {
+            setTodos(storedTodos);
+        }
+    }, []);
+
+    React.useEffect(function () {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+    }, [todos]);
 
     function handleAddTodo(event) {
         var name = todoNameRef.current.value;
