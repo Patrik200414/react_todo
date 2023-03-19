@@ -3,30 +3,40 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 import TodoList from "./ToDoList.js";
 
 export default function App() {
-    var _React$useState = React.useState(['Todo 1', 'Todo 2']),
+    var _React$useState = React.useState([]),
         _React$useState2 = _slicedToArray(_React$useState, 2),
         todos = _React$useState2[0],
         setTodos = _React$useState2[1];
 
+    var todoNameRef = React.useRef();
+
+    function handleAddTodo(event) {
+        var name = todoNameRef.current.value;
+        if (name === '') {
+            return;
+        } else {
+            console.log(name);
+        }
+    }
     return React.createElement(
-        'div',
+        "div",
         null,
         React.createElement(TodoList, { todos: todos }),
-        React.createElement('input', { type: 'text' }),
+        React.createElement("input", { ref: todoNameRef, type: "text" }),
         React.createElement(
-            'button',
-            null,
-            'Add ToDo'
+            "button",
+            { onClick: handleAddTodo },
+            "Add ToDo"
         ),
         React.createElement(
-            'button',
+            "button",
             null,
-            'Clear Completed'
+            "Clear Completed"
         ),
         React.createElement(
-            'div',
+            "div",
             null,
-            '0 left to do'
+            "0 left to do"
         )
     );
 }

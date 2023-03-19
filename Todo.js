@@ -4,6 +4,11 @@ export default function Todo(_ref) {
     return React.createElement(
         "div",
         null,
-        todo
+        React.createElement(
+            "label",
+            null,
+            React.createElement("input", { type: "checkbox", checked: todo.compleate }),
+            todo.name
+        )
     );
 }
