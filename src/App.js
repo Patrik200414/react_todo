@@ -48,7 +48,7 @@ export default function App(){
             <input ref={todoNameRef} type="text"></input>
             <button onClick={handleAddTodo}>Add ToDo</button>
             <button>Clear Completed</button>
-            <div>0 left to do</div>
+            <div>{todos.filter(todo => !todo.compleate).length} left to do</div>
         </div>
     )
 }

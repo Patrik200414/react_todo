@@ -69,7 +69,10 @@ export default function App() {
         React.createElement(
             "div",
             null,
-            "0 left to do"
+            todos.filter(function (todo) {
+                return !todo.compleate;
+            }).length,
+            " left to do"
         )
     );
 }
