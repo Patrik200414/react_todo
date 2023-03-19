@@ -51,6 +51,14 @@ export default function App() {
             todoNameRef.current.value = '';
         }
     }
+
+    function handleClearTodos() {
+        var newTodos = todos.filter(function (todo) {
+            return !todo.compleate;
+        });
+        setTodos(newTodos);
+    }
+
     return React.createElement(
         "div",
         null,
@@ -63,7 +71,7 @@ export default function App() {
         ),
         React.createElement(
             "button",
-            null,
+            { onClick: handleClearTodos },
             "Clear Completed"
         ),
         React.createElement(
