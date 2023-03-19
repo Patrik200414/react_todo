@@ -1,4 +1,5 @@
 import TodoList from "./ToDoList.js";
+import uniqueid from "./uuid.js";
 
 export default function App(){
     const [todos, setTodos] = React.useState([]);
@@ -10,7 +11,14 @@ export default function App(){
             return
         }
         else{
-            console.log(name);
+            setTodos((prevTodos) => {
+                return [...prevTodos, {
+                    id: uniqueid(),
+                    name: name,
+                    compleate: false
+                }]
+            })
+            todoNameRef.current.value = '';
         }
     }
     return(
