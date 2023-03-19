@@ -19,6 +19,13 @@ export default function App(){
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
     }, [todos])
 
+    function toggleTodo(id){
+        const newTodos = [...todos];
+        const todo = newTodos.find(todo => todo.id === id);
+        todo.compleate = !todo.compleate;
+        setTodos(newTodos);
+    }
+
     function handleAddTodo(event){
         let name = todoNameRef.current.value;
         if(name === ''){
@@ -37,7 +44,7 @@ export default function App(){
     }
     return(
         <div>
-            <TodoList todos={todos}/>
+            <TodoList todos={todos} toggleTodo={toggleTodo}/>
             <input ref={todoNameRef} type="text"></input>
             <button onClick={handleAddTodo}>Add ToDo</button>
             <button>Clear Completed</button>

@@ -1,10 +1,10 @@
 import Todo from "./Todo.js";
 
-export default function TodoList({todos}){
+export default function TodoList({todos, toggleTodo}){
     return(
         todos.map((todo) => {
             return(
-                <Todo key={todo.id} todo={todo} />
+                <Todo key={todo.id} toggleTodo={toggleTodo} todo={todo} />
             )
         })
     )

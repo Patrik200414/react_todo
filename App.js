@@ -27,6 +27,15 @@ export default function App() {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
     }, [todos]);
 
+    function toggleTodo(id) {
+        var newTodos = [].concat(_toConsumableArray(todos));
+        var todo = newTodos.find(function (todo) {
+            return todo.id === id;
+        });
+        todo.compleate = !todo.compleate;
+        setTodos(newTodos);
+    }
+
     function handleAddTodo(event) {
         var name = todoNameRef.current.value;
         if (name === '') {
@@ -45,7 +54,7 @@ export default function App() {
     return React.createElement(
         "div",
         null,
-        React.createElement(TodoList, { todos: todos }),
+        React.createElement(TodoList, { todos: todos, toggleTodo: toggleTodo }),
         React.createElement("input", { ref: todoNameRef, type: "text" }),
         React.createElement(
             "button",
